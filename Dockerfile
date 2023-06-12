@@ -2,7 +2,10 @@ FROM ubuntu:20.04
 MAINTAINER docker@ipepe.pl
 
 ENV DEBIAN_FRONTEND=noninteractive LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
-RUN apt-get update &&  \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y locales && \
+    localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+    echo 'LANG="en_US.UTF-8"' > /etc/default/locale && \
+    echo 'LANGUAGE="en_US:en"' >> /etc/default/locale && \
     apt-get install --no-install-recommends -y \
     git ca-certificates curl netbase wget \
     make gcc libssl-dev libreadline-dev zlib1g-dev autoconf bison \
