@@ -34,7 +34,7 @@ ARG RUBY_MAJOR=2.3
 RUN mkdir -p /usr/local/etc  && {   echo 'install: --no-document';   echo 'update: --no-document';  } >> /usr/local/etc/gemrc && \
     mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME" && \
     ruby-build $RUBY_VERSION /tmp/built-ruby && \
-    cp /tmp/built-ruby/bin/ruby /usr/local/binruby && \
+    cp /tmp/built-ruby/bin/ruby /usr/local/bin/ruby && \
     cp /tmp/built-ruby/bin/gem /usr/local/bin/gem && \
     cp /tmp/built-ruby/bin/irb /usr/local/bin/irb
 
