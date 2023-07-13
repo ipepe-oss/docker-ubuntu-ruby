@@ -1,5 +1,8 @@
 # docker-ubuntu-ruby
 
+<a href="https://hub.docker.com/r/ipepe/ubuntu-ruby/tags"><img src="https://img.shields.io/docker/pulls/ipepe/ubuntu-ruby"></a>
+
+
 This project is the answer to recently missing support for Debian Strech that is basis for `ruby:2.3.1` image and others. This takes Ubuntu 20.04 as base image and uses <https://github.com/rbenv/ruby-build> to install ruby in specific version. I will try to keep this as compatibile as possible with [official ruby images](https://hub.docker.com/_/ruby).
 
 ## How to
