@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+
 RUBY_VERSIONS = [
-  "2.3.8"
+  '2.7.7', '2.7.8'
 ].freeze
 
 RUBY_VERSIONS.each do |ruby_version|

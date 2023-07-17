@@ -10,6 +10,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y locales && \
     git ca-certificates curl netbase wget \
     make gcc libssl-dev libreadline-dev zlib1g-dev autoconf bison \
     build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev \
+    libjemalloc-dev \
     nano htop git curl cron gosu psmisc \
     imagemagick \
     shared-mime-info \
@@ -33,7 +34,7 @@ ARG RUBY_MAJOR=2.3
 
 RUN mkdir -p /usr/local/etc  && {   echo 'install: --no-document';   echo 'update: --no-document';  } >> /usr/local/etc/gemrc && \
     mkdir -p "$GEM_HOME" && chmod 777 "$GEM_HOME" && \
-    ruby-build $RUBY_VERSION /tmp/built-ruby && \
+    env RUBY_CONFIGURE_OPTS='--with-jemalloc' ruby-build $RUBY_VERSION /tmp/built-ruby && \
     cp /tmp/built-ruby/bin/ruby /usr/local/bin/ruby && \
     cp /tmp/built-ruby/bin/gem /usr/local/bin/gem && \
     cp /tmp/built-ruby/bin/irb /usr/local/bin/irb
